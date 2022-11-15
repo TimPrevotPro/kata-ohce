@@ -2,17 +2,6 @@ const test = require('tape')
 const { TestInteractor, UI } = require('../ui')
 
 test('main loop', (t) => {
-  /* TODO
-    Given the following inputs:
-    - hello
-    - oto
-    - quit
-
-    Check that the following messages are printed:
-    - olleh
-    - oto
-    - That was a palindrome!
-    */
   
   const ui = new UI(TestInteractor)
   ui.mainLoop()

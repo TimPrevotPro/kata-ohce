@@ -5,15 +5,29 @@ class SystemClock {
   }
 }
 
-class Greeter {
-  constructor () {
-    this.clock = new SystemClock()
+class SystemClockTest{
+  constructor (date) {
+    this.date = date
   }
 
-  greet (date) {
-    let currentHour = date;
-    // const currentHour = this.clock.currentHour()
-    // added code
+  currentHour(){
+    return this.date
+  }
+}
+
+class Greeter {
+  constructor (date) {
+    if (date === undefined){
+      this.clock = new SystemClock()
+    }
+    else {
+      this.clock = new SystemClockTest(date)
+    }
+
+  }
+
+  greet () {
+    const currentHour = this.clock.currentHour()
     if (currentHour >= 6 && currentHour < 12) {
       return 'Good morning'
     }

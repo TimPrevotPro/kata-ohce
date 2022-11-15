@@ -1,6 +1,22 @@
 const prompt = require('prompt-sync')()
 const reverse = require('./ohce').reverse
 
+class TestInteractor {
+
+  messages = ["hello", "oto", "quit"]
+  logs = []
+
+  readInput () {
+    const msg = this.messages.shift()
+    return msg
+  }
+
+  printMessage (message) {
+    this.messages.push(message)
+  }
+
+}
+
 class ConsoleInteractor {
   readInput () {
     return prompt('')
@@ -12,8 +28,9 @@ class ConsoleInteractor {
 }
 
 class UI {
-  constructor () {
-    this.interactor = new ConsoleInteractor()
+  constructor (susInteractor) {
+    if(susInteractor) this.interactor = new susInteractor()
+    else this.interactor = new ConsoleInteractor()
   }
 
   mainLoop () {
@@ -31,4 +48,4 @@ class UI {
   }
 }
 
-module.exports = { UI }
+module.exports = { TestInteractor, UI }
